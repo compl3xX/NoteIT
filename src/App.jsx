@@ -6,28 +6,23 @@ import { SideBar, NavBar } from './components/index'
 function App() {
 
   return (
+    <div className="mainContainer">
 
-    <BrowserRouter>
-      <div className="mainContainer">
+      <BrowserRouter>
         <SideBar />
-        <NavBar/>
         <div className="subContainer">
-        
+          <NavBar />
           <Routes>
 
             <Route path="/" element={<AllNotes />} />
             <Route path="/archive" element={<ArchiveNotes />} />
             <Route path="/trash" element={<TrashNotes />} />
-            
+
           </Routes>
-
         </div>
+      </BrowserRouter >
 
-      </div>
-
-
-    </BrowserRouter>
-
+    </div>
 
   )
 }
