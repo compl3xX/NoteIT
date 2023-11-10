@@ -2,3 +2,14 @@
   background-color: #a2d2ff;
   width: 120px;
 }
+.sidebar-content {
+  display: flex;
+  flex-direction: row;
+}
+.sidebar-content-items {
+  display: flex;
+  gap: 30px;
+  height: 50px;
+  align-items: center;
+  padding: 10px;
+}
