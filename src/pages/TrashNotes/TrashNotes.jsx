@@ -1,8 +1,12 @@
-import React from 'react'
+import { useSelector } from "react-redux"
+import { NoteCard } from "../../components"
 
 const TrashNotes = () => {
+
+    const trash = useSelector(state => state.note.trashNotes)
+
     return (
-        <div>TrashNotes</div>
+         <NoteCard notes={trash} type="trash"/>
     )
 }
 

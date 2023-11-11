@@ -1,15 +1,12 @@
-import React, { useState } from 'react'
+import React, { } from 'react'
 import './NoteCard.scss'
 import { TbPinnedFilled, TbPinned } from 'react-icons/tb'
-import { useDispatch } from "react-redux"
-import { addToArchive } from "../../features"
+
+import { getButton } from "../../utils"
 
 
-const NoteCard = ({ notes }) => {
+const NoteCard = ({ notes, type }) => {
 
-    const [isArchive,setisArchived]=useState(false);
-
-    const dispatch = useDispatch();
 
     return (
         <div className="note-card" >
@@ -22,7 +19,7 @@ const NoteCard = ({ notes }) => {
                     <p>{note.date}</p>
                     <p>{note.time}</p>
                     <p>{note.priority}</p>
-                    <button onClick={() => { dispatch(addToArchive(note.id)) }}>Archive</button>
+                    {getButton({ type, note })}
                 </div>
 
             ))}

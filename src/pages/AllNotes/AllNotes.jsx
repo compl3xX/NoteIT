@@ -1,7 +1,8 @@
 import React from 'react'
-import { NoteCard } from "../../components"
+import { CreateNoteModal, NoteCard, TextEditor } from "../../components"
 
-import { useSelector} from "react-redux"
+import { useSelector } from "react-redux"
+
 
 const AllNotes = () => {
 
@@ -10,6 +11,7 @@ const AllNotes = () => {
 
     return (
         <div>
+            <CreateNoteModal />
             <NoteCard notes={allNotes} />
         </div>
     )

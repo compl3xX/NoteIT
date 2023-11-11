@@ -9,7 +9,7 @@ const ArchiveNotes = () => {
 
     return (
         <div>
-            <NoteCard notes={archive} />
+            <NoteCard notes={archive} type="archive"/>
         </div>
     )
 }

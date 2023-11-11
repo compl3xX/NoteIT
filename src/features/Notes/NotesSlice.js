@@ -17,22 +17,21 @@ const NotesSlice = createSlice({
             state.allNotes.push(action.payload)
         },
 
-        addToArchive: (state, action) => {
-            const note = state.allNotes.find(note => note.id === action.payload)
-            state.archiveNotes.push(note)
-            state.allNotes = state.allNotes.filter(note => note.id !== action.payload)
+        addToArchive: (state, { payload }) => {
+            state.archiveNotes.push(payload)
+            state.allNotes = state.allNotes.filter(note => note.id !== payload.id)
         },
 
-        addToTrash: (state, action) => {
-            const note = state.archiveNotes.find(note => note.id === action.payload)
-            state.allNotes.push(note)
-            state.archiveNotes = state.archiveNotes.filter(note => note.id !== action.payload)
-
+        addToTrash: (state, { payload }) => {
+            state.trashNotes.push(payload)
+            state.allNotes = state.archiveNotes.filter(note => note.id !== payload.id)
         }
+
+        
 
     }
 })
 
 export default NotesSlice.reducer
 
-export const { noteAdd, addToArchive ,addToTrash} = NotesSlice.actions;
+export const { noteAdd, addToArchive, addToTrash } = NotesSlice.actions;
