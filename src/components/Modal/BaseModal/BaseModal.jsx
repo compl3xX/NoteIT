@@ -9,12 +9,19 @@ const BaseModal = ({ children }) => {
 
     const dispatch = useDispatch();
 
-    console.log(children)
+    const handleClose = () => {
+
+        dispatch(toggleCreateNodeModal(false))
+    }
+
+
     return (
 
         createPortal(
-            <div className="modal" onClick={() => { dispatch(toggleCreateNodeModal(false)) }}>
-                {children}
+            <div className="modal" onClick={handleClose}>
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                    {children}
+                </div>
             </div>, document.body)
 
     )
@@ -22,3 +29,5 @@ const BaseModal = ({ children }) => {
 }
 
 export default BaseModal
+
+// 

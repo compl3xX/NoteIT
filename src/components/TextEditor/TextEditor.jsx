@@ -1,11 +1,13 @@
-
+import { useDispatch } from "react-redux"
 const TextEditor = () => {
+
+
     return (
         <div>
             <div>Title</div>
             <input />
             <div>Content</div>
-            <textarea  style={{height:"200px",width:"600px",resize:"none"}}/>
+            <textarea style={{ height: "200px", width: "600px", resize: "none" }} />
         </div>
     )
 }

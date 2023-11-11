@@ -11,7 +11,11 @@ const CreateNoteModal = () => {
 
 
     return (
-        modal && (<BaseModal><TextEditor /></BaseModal>)
+        modal && (<BaseModal>
+            <div>
+                <TextEditor />
+            </div>
+        </BaseModal>)
 
     )
 }
