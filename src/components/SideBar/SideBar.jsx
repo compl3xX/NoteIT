@@ -5,7 +5,7 @@ import './SideBar.scss'
 import { NavLink } from "react-router-dom"
 import { v4 } from 'uuid';
 
-import { BiSolidArchive , BiSolidTrash } from 'react-icons/Bi';
+import { BiSolidArchive, BiSolidTrash } from 'react-icons/bi';
 import { FaNoteSticky } from "react-icons/fa6"
 
 
