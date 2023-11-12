@@ -19,7 +19,8 @@ const BaseModal = ({ children }) => {
 
         createPortal(
             <div className="modal" onClick={handleClose}>
-                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <div className="modal-content" onClick={e => e.stopPropagation()} >
+                    <button onClick={handleClose}>Close</button>
                     {children}
                 </div>
             </div>, document.body)

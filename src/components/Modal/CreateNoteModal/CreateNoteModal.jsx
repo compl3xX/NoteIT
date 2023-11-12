@@ -1,9 +1,8 @@
 
-import { useSelector } from "react-redux"
-import TextEditor from "../../TextEditor/TextEditor"
-
 import './CreateNoteModal.scss'
+import { useSelector } from "react-redux"
 import BaseModal from "../BaseModal/BaseModal"
+import TextEditor from "../../TextEditor/TextEditor"
 
 const CreateNoteModal = () => {
 
@@ -11,7 +10,7 @@ const CreateNoteModal = () => {
 
 
     return (
-        modal && (<BaseModal>
+        modal && (<BaseModal >
             <div>
                 <TextEditor />
             </div>

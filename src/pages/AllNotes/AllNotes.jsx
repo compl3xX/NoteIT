@@ -3,7 +3,8 @@ import { CreateNoteModal, NoteCard } from "../../components"
 
 import { useSelector } from "react-redux"
 
-    
+
+
 const AllNotes = () => {
 
     const allNotes = useSelector(state => state.note.allNotes)
@@ -11,8 +12,8 @@ const AllNotes = () => {
 
     return (
         <div>
-            <CreateNoteModal/>
-            <NoteCard notes={allNotes} type="allnotes"/>
+            <CreateNoteModal />
+            <NoteCard notes={allNotes} type="allnotes" />
         </div>
     )
 }
