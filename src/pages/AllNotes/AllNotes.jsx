@@ -12,7 +12,7 @@ const AllNotes = () => {
     return (
         <div>
             <CreateNoteModal/>
-            <NoteCard notes={allNotes} />
+            <NoteCard notes={allNotes} type="allnotes"/>
         </div>
     )
 }

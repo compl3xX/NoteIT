@@ -1,23 +1,21 @@
 import { v4 } from "uuid";
+import { getTimeDate } from "../utils";
 
-const currentDate = new Date();
+const { time, date } = getTimeDate()
 
-const date=currentDate.toLocaleDateString();
-const time=currentDate.toLocaleTimeString();
-
-console.log(date,time)
+console.log(date, time)
 
 export const notesData = [
     {
         title: "Rishu Tiwari",
         content: "It's not over until I win!!",
         bgColor: 'green',
-        priority: 'high',
+        priority: 'High',
         tag: 'quote',
         id: v4(),
         date,
         time,
-        isPinned:true
+        isPinned: true
     }
 ]
 

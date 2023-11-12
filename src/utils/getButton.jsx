@@ -1,10 +1,10 @@
-import { noteAdd, addToArchive, addToTrash } from "../features"
+import { addToArchive, addToTrash } from "../features"
 
 import { useDispatch } from "react-redux"
 
-const getButton = ({ type, note }) => {
+const getButton = ({ type, note, dispatch }) => {
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
     if (type === 'archive') {
         return (

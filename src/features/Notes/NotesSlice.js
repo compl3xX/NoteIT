@@ -13,8 +13,8 @@ const NotesSlice = createSlice({
     initialState,
     reducers: {
 
-        noteAdd: (state, action) => {
-            state.allNotes.push(action.payload)
+        noteAdd: (state, { payload }) => {
+            state.allNotes.push(payload)
         },
 
         addToArchive: (state, { payload }) => {
@@ -24,10 +24,10 @@ const NotesSlice = createSlice({
 
         addToTrash: (state, { payload }) => {
             state.trashNotes.push(payload)
-            state.allNotes = state.archiveNotes.filter(note => note.id !== payload.id)
+            state.allNotes = state.allNotes.filter(note => note.id !== payload.id)
         }
 
-        
+
 
     }
 })
