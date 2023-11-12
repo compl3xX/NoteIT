@@ -1,6 +1,6 @@
 import './App.scss'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { AllNotes, ArchiveNotes, TrashNotes } from './pages/index'
+import { AllNotes, ArchiveNotes, Tag, TrashNotes } from './pages/index'
 import { SideBar, NavBar } from './components/index'
 
 function App() {
@@ -12,13 +12,14 @@ function App() {
         <SideBar />
         <div className="subContainer">
           <NavBar />
-          <Routes>
 
+          <Routes>
             <Route path="/" element={<AllNotes />} />
             <Route path="/archive" element={<ArchiveNotes />} />
             <Route path="/trash" element={<TrashNotes />} />
-
+            <Route path="/tag/:name" element={<Tag />} />
           </Routes>
+
         </div>
       </BrowserRouter >
 

@@ -5,20 +5,20 @@ import { toggleCreateNodeModal } from "../../../features"
 import { useDispatch } from "react-redux"
 
 
-const BaseModal = ({ children }) => {
+const BaseModal = ({ children, closeModal }) => {
 
     const dispatch = useDispatch();
 
     const handleClose = () => {
 
-        dispatch(toggleCreateNodeModal(false))
+        closeModal()
     }
 
 
     return (
 
         createPortal(
-            <div className="modal" onClick={handleClose}>
+            <div className="modal" >
                 <div className="modal-content" onClick={e => e.stopPropagation()} >
                     <button onClick={handleClose}>Close</button>
                     {children}

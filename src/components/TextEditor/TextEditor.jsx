@@ -1,7 +1,7 @@
 import { useState, useRef } from "react"
 import { useDispatch } from "react-redux"
-import { noteAdd, toggleCreateNodeModal } from "../../features";
-import useOutsideClick from "../../customHook/useOutsideClick";
+import { noteAdd, toggleCreateNodeModal, toggleCreateTagModal } from "../../features";
+
 import { v4 } from "uuid";
 import { getTimeDate, getValidateForm } from "../../utils";
 
@@ -83,7 +83,7 @@ const TextEditor = () => {
             <p>Content</p>
             <textarea ref={contentRef} onChange={(e) => { setContent(e.target.value) }} style={{ height: "200px", width: "600px", resize: "none" }} />
             <div>
-                <button>Tag</button>
+                <button onClick={() => { dispatch(toggleCreateTagModal(true)) }}>Tag</button>
                 <label>
                     Priority:
                     <select onChange={e => setPriority(e.target.value)} defaultValue="Low">

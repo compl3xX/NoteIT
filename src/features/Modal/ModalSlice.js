@@ -4,7 +4,7 @@ const initialState = {
 
     createNoteModal: false,
 
-    filterModal: false
+    tagModal: false
 
 };
 
@@ -14,14 +14,18 @@ const ModalSlice = createSlice({
     reducers: {
 
         toggleCreateNodeModal: (state, { payload }) => {
-            console.log(payload)
             state.createNoteModal = payload
+        },
+
+        toggleCreateTagModal: (state, { payload }) => {
+            console.log(payload)
+            state.tagModal = payload
         }
 
     }
 
 })
 
-export const { toggleCreateNodeModal } = ModalSlice.actions
+export const { toggleCreateNodeModal ,toggleCreateTagModal} = ModalSlice.actions
 
 export default ModalSlice.reducer
