@@ -9,7 +9,7 @@ import { FaMinus } from "react-icons/fa6";
 
 const CreateTagModal = ({ handelTags, selTags }) => {
 
-    const [tag, setTag] = useState('')
+    const [tagName, setTagName] = useState('')
 
 
     const dispatch = useDispatch();
@@ -21,25 +21,32 @@ const CreateTagModal = ({ handelTags, selTags }) => {
     const tags = useSelector(state => state.tag.tagList)
 
     const submitTag = () => {
-        dispatch(addTag(tag))
+        dispatch(addTag(tagName))
+        setTagName('');
     }
 
-    const addtagToNote = (tagName) => {
-        handelTags({ tag: tagName, type: "add" })
+    const addtagToNote = ({ tagName, type }) => {
+
+        type === 'add' ? handelTags({ tag: tagName, type: "add" }) :
+            handelTags({ tag: tagName, type: "del" })
+
+
     }
 
 
     return (
         <BaseModal closeModal={closeModal}>
             <div>
-                <input onChange={(e) => setTag(e.target.value)} />
+                <input onChange={(e) => setTagName(e.target.value)} value={tagName} />
                 <button onClick={submitTag}>Submit</button>
                 {tags.map((tag) => (
                     <li key={tag.id}
-                        onClick={() => { addtagToNote(tag.tagName) }}>
+                    >
                         {tag.tagName}
+
                         {selTags?.find((selTag) => (selTag.tagName === tag.tagName)) ?
-                            (<FaMinus />) : (<FaPlus />)}
+                            (<FaMinus onClick={() => { addtagToNote({ tagName: tag.tagName, type: 'del' }) }} />) :
+                            (<FaPlus onClick={() => { addtagToNote({ tagName: tag.tagName, type: 'add' }) }} />)}
 
                     </li>
                 ))}

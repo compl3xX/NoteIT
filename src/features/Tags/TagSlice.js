@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 import { v4 } from "uuid";
 
 const initialState = {
@@ -13,7 +14,11 @@ const TagSlice = createSlice({
     reducers: {
 
         addTag: (state, { payload }) => {
-            state.tagList.push({ tagName: payload, id: v4() })
+
+            if (state.tagList.find(({ tagName }) => (tagName === payload)) ) {
+                toast.warning("Tag already exists");
+            }
+            else state.tagList.push({ tagName: payload, id: v4() })
         }
 
     }

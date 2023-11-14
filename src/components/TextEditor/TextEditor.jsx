@@ -4,6 +4,7 @@ import { noteAdd, toggleCreateNodeModal, toggleCreateTagModal } from "../../feat
 
 import { v4 } from "uuid";
 import { getTimeDate, getValidateForm } from "../../utils";
+import { FaTimes } from "react-icons/fa";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -78,7 +79,14 @@ const TextEditor = ({ editorProps }) => {
             <p>Content</p>
             <textarea ref={contentRef} onChange={(e) => { setContent(e.target.value) }} style={{ height: "200px", width: "600px", resize: "none" }} />
 
-            <div>{selTags.map((seltag) => (<span key={seltag.id}>{seltag.tagName}</span>))}</div>
+            <div>
+                {
+                    selTags.map((seltag) => (<span key={seltag.id}>
+                        {seltag.tagName}
+                        <FaTimes onClick={() => { handelTags({ tag: seltag.tagName, type: 'del' }) }} />
+                    </span>))
+                }
+            </div>
 
             <div>
                 <button onClick={() => { dispatch(toggleCreateTagModal({ type: 'add', view: true })) }}>Tag</button>

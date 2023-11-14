@@ -30,6 +30,9 @@ const CreateNoteModal = () => {
         if (type === 'add') {
             setSelTags([...selTags, { tagName: tag, id: v4() }]);
         }
+        else {
+            setSelTags(selTags.filter((selTag) => selTag.tagName !== tag))
+        }
     }
 
 
@@ -41,7 +44,7 @@ const CreateNoteModal = () => {
                 {addTagModal && <CreateTagModal handelTags={handelTags} selTags={selTags} />}
                 <TextEditor editorProps={{
                     title, setTitle, content,
-                    setContent, setPriority, priority, selTags, setSelTags
+                    setContent, setPriority, priority, selTags, setSelTags, handelTags
                 }} />
             </div>
         </BaseModal>
