@@ -16,11 +16,11 @@ const NoteCard = ({ notes, type }) => {
                 <span>{note.isPinned ? <TbPinnedFilled /> : <TbPinned />}</span>
                 <span>{note.title}</span>
                 <p>{note.content}</p>
-                <p>{note.tag}</p>
+                <p>{note.tag.map((t) => (<span key={t.id}>{t.tagName}</span>))}</p>
                 <p>{note.date}</p>
                 <p>{note.time}</p>
                 <p>{note.priority}</p>
-                {getButton({ type, note ,dispatch})}
+                {getButton({ type, note, dispatch })}
             </div>
 
         ))

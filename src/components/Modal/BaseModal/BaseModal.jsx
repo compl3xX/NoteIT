@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux"
 
 const BaseModal = ({ children, closeModal }) => {
 
+
     const dispatch = useDispatch();
 
     const handleClose = () => {

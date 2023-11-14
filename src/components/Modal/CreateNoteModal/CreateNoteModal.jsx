@@ -1,29 +1,52 @@
 
 import './CreateNoteModal.scss'
-import { useSelector, useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import BaseModal from "../BaseModal/BaseModal"
 import TextEditor from "../../TextEditor/TextEditor"
 import { toggleCreateNodeModal } from "../../../features"
+import CreateTagModal from "../CreateTagModal/CreateTagModal"
+import { useState } from "react"
+import { v4 } from "uuid"
 
 const CreateNoteModal = () => {
 
-    const modal = useSelector(state => state.modal.createNoteModal)
+    const [title, setTitle] = useState('');
+
+    const [content, setContent] = useState('');
+
+    const [priority, setPriority] = useState('Low')
+
+    const [selTags, setSelTags] = useState([]);
 
     const dispatch = useDispatch();
+
+    const { addTagModal, createNoteModal } = useSelector(state => state.modal)
 
     const closeModal = () => {
         dispatch(toggleCreateNodeModal(false))
     }
 
+    const handelTags = ({ tag, type }) => {
+        if (type === 'add') {
+            setSelTags([...selTags, { tagName: tag, id: v4() }]);
+        }
+    }
+
 
     return (
-        modal && (
-            <BaseModal closeModal={closeModal}>
-                <div>
-                    <TextEditor />
-                </div>
-            </BaseModal>
-        )
+
+        <BaseModal closeModal={closeModal}>
+
+            <div>
+                {addTagModal && <CreateTagModal handelTags={handelTags} selTags={selTags} />}
+                <TextEditor editorProps={{
+                    title, setTitle, content,
+                    setContent, setPriority, priority, selTags, setSelTags
+                }} />
+            </div>
+        </BaseModal>
+
+
 
     )
 }

@@ -8,7 +8,14 @@ const Tag = () => {
 
     const { name } = useParams();
 
-    const tagNotes = notes.filter((note) => (note.tag === name))
+
+    let tagNotes = []
+
+    notes.forEach((note) => {
+        if (note.tag.find(({ tagName }) => (tagName === name))) tagNotes.push(note)
+    });
+
+    console.log(tagNotes)
 
     return (
 

@@ -11,7 +11,7 @@ export const notesData = [
         content: "It's not over until I win!!",
         bgColor: 'green',
         priority: 'High',
-        tag: 'quote',
+        tag: [{ tagName: 'quote', id: v4() }],
         id: v4(),
         date,
         time,

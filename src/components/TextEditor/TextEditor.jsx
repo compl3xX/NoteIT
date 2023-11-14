@@ -8,13 +8,11 @@ import { getTimeDate, getValidateForm } from "../../utils";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const TextEditor = () => {
+const TextEditor = ({ editorProps }) => {
 
-    const [title, setTile] = useState('');
+    const { title, setTitle, content, setContent, selTags,
+        setSelTags, priority, setPriority, handelTags } = editorProps;
 
-    const [content, setContent] = useState('');
-
-    const [priority, setPriority] = useState('Low')
 
     const { time, date } = getTimeDate();
 
@@ -29,16 +27,13 @@ const TextEditor = () => {
         content,
         bgColor: 'green',
         priority,
-        tag: 'quote',
+        tag: selTags,
         id: v4(),
         date,
         time,
         isPinned: false
     }
 
-    // useOutsideClick(ref, () => {
-    //     dispatch(noteAdd(note))
-    // })
 
     const handelSubmit = () => {
 
@@ -79,11 +74,14 @@ const TextEditor = () => {
     return (
         <div >
             <p>Title</p>
-            <input ref={titleRef} onChange={(e) => { setTile(e.target.value) }} />
+            <input ref={titleRef} onChange={(e) => { setTitle(e.target.value) }} />
             <p>Content</p>
             <textarea ref={contentRef} onChange={(e) => { setContent(e.target.value) }} style={{ height: "200px", width: "600px", resize: "none" }} />
+
+            <div>{selTags.map((seltag) => (<span key={seltag.id}>{seltag.tagName}</span>))}</div>
+
             <div>
-                <button onClick={() => { dispatch(toggleCreateTagModal(true)) }}>Tag</button>
+                <button onClick={() => { dispatch(toggleCreateTagModal({ type: 'add', view: true })) }}>Tag</button>
                 <label>
                     Priority:
                     <select onChange={e => setPriority(e.target.value)} defaultValue="Low">

@@ -13,7 +13,7 @@ const TagSlice = createSlice({
     reducers: {
 
         addTag: (state, { payload }) => {
-            state.tagList.push({ ...payload, id: v4() })
+            state.tagList.push({ tagName: payload, id: v4() })
         }
 
     }
