@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const TextEditor = ({ editorProps }) => {
 
     const { title, setTitle, content, setContent, selTags,
-        setSelTags, priority, setPriority, handelTags } = editorProps;
+        setSelTags, priority, setPriority, handelTags, EditNote } = editorProps;
 
 
     const { time, date } = getTimeDate();
@@ -23,16 +23,20 @@ const TextEditor = ({ editorProps }) => {
     const dispatch = useDispatch();
 
 
-    const note = {
+    let note = {
         title,
         content,
         bgColor: 'green',
         priority,
         tag: selTags,
-        id: v4(),
-        date,
-        time,
         isPinned: false
+    }
+
+    if (EditNote) {
+        note = { ...EditNote, ...note }
+    }
+    else {
+        note = { ...note, id: v4(), date, time }
     }
 
 
@@ -44,6 +48,10 @@ const TextEditor = ({ editorProps }) => {
         if (valid === 3) {
             dispatch(noteAdd(note))
             dispatch(toggleCreateNodeModal(false))
+            setContent('');
+            setTitle('');
+            setPriority('Low')
+            setSelTags([])
         }
         else {
 
@@ -75,10 +83,12 @@ const TextEditor = ({ editorProps }) => {
     return (
         <div >
             <p>Title</p>
-            <input ref={titleRef} onChange={(e) => { setTitle(e.target.value) }} />
+            <input ref={titleRef} onChange={(e) => { setTitle(e.target.value) }} value={title} />
             <p>Content</p>
-            <textarea ref={contentRef} onChange={(e) => { setContent(e.target.value) }} style={{ height: "200px", width: "600px", resize: "none" }} />
-
+            <textarea ref={contentRef}
+                onChange={(e) => { setContent(e.target.value) }}
+                style={{ height: "200px", width: "600px", resize: "none" }}
+                value={content} />
             <div>
                 {
                     selTags.map((seltag) => (<span key={seltag.id}>
@@ -92,7 +102,7 @@ const TextEditor = ({ editorProps }) => {
                 <button onClick={() => { dispatch(toggleCreateTagModal({ type: 'add', view: true })) }}>Tag</button>
                 <label>
                     Priority:
-                    <select onChange={e => setPriority(e.target.value)} defaultValue="Low">
+                    <select onChange={e => setPriority(e.target.value)} value={priority}>
                         <option value="High">High</option>
                         <option value="Medium">Medium</option>
                         <option value="Low">Low</option>

@@ -10,13 +10,17 @@ import { v4 } from "uuid"
 
 const CreateNoteModal = () => {
 
-    const [title, setTitle] = useState('');
+    const EditNote = useSelector(state => state.note.editNote)
 
-    const [content, setContent] = useState('');
+    // console.log(EditNote.title)
 
-    const [priority, setPriority] = useState('Low')
+    const [title, setTitle] = useState(EditNote?.title || '');
 
-    const [selTags, setSelTags] = useState([]);
+    const [content, setContent] = useState(EditNote?.content || '');
+
+    const [priority, setPriority] = useState(EditNote?.priority || 'Low')
+
+    const [selTags, setSelTags] = useState(EditNote?.tag || []);
 
     const dispatch = useDispatch();
 
@@ -44,7 +48,7 @@ const CreateNoteModal = () => {
                 {addTagModal && <CreateTagModal handelTags={handelTags} selTags={selTags} />}
                 <TextEditor editorProps={{
                     title, setTitle, content,
-                    setContent, setPriority, priority, selTags, setSelTags, handelTags
+                    setContent, setPriority, priority, selTags, setSelTags, handelTags, EditNote
                 }} />
             </div>
         </BaseModal>
