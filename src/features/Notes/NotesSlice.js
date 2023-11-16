@@ -36,12 +36,32 @@ const NotesSlice = createSlice({
         editNote: (state, { payload }) => {
             state.editNote = payload
             console.log(payload)
-        }
+        },
 
+        pinNote: (state, { payload }) => {
+            const idx = state.allNotes.findIndex(({ id }) => (id === payload.noteId))
+            state.allNotes[idx].isPinned = !payload.isPinned
+        },
+
+        unArchiveNote: (state, { payload }) => {
+            state.allNotes.push(payload)
+            state.archiveNotes = state.archiveNotes.filter(note => note.id !== payload.id)
+        },
+
+        unTrashNote: (state, { payload }) => {
+            state.allNotes.push(payload)
+            state.trashNotes = state.trashNotes.filter(note => note.id !== payload.id)
+        },
+
+        deleteNote: (state, { payload }) => {
+
+            if (payload.type === 'trash') state.trashNotes = state.trashNotes.filter(note => note.id !== payload.note.id)
+            else state.archiveNotes = state.archiveNotes.filter(note => note.id !== payload.note.id)
+        }
 
     }
 })
 
 export default NotesSlice.reducer
 
-export const { noteAdd, addToArchive, addToTrash, editNote } = NotesSlice.actions;
+export const { noteAdd, addToArchive, addToTrash, editNote, pinNote, unArchiveNote, unTrashNote, deleteNote } = NotesSlice.actions;

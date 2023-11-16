@@ -21,8 +21,10 @@ const CreateTagModal = ({ handelTags, selTags }) => {
     const tags = useSelector(state => state.tag.tagList)
 
     const submitTag = () => {
-        dispatch(addTag(tagName))
-        setTagName('');
+        if (tagName.length > 0) {
+            dispatch(addTag(tagName))
+            setTagName('');
+        }
     }
 
     const addtagToNote = ({ tagName, type }) => {
@@ -30,9 +32,7 @@ const CreateTagModal = ({ handelTags, selTags }) => {
         type === 'add' ? handelTags({ tag: tagName, type: "add" }) :
             handelTags({ tag: tagName, type: "del" })
 
-
     }
-
 
     return (
         <BaseModal closeModal={closeModal}>

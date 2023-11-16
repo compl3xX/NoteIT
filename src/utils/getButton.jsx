@@ -1,4 +1,4 @@
-import { addToArchive, addToTrash, editNote, toggleCreateNodeModal } from "../features"
+import { addToArchive, addToTrash, editNote, toggleCreateNodeModal, unArchiveNote, unTrashNote, deleteNote } from "../features"
 
 import { useDispatch } from "react-redux"
 
@@ -12,16 +12,16 @@ const getButton = ({ type, note, dispatch }) => {
     if (type === 'archive') {
         return (
             < div >
-                <button>unarchive</button>
-                <button>trash</button>
+                <button onClick={() => { dispatch(unArchiveNote(note)) }}>unarchive</button>
+                <button onClick={() => { dispatch(deleteNote({ note, type: 'archive' })) }}>trash</button>
             </div >
         )
     }
     else if (type === 'trash') {
         return (
             < div >
-                <button>restore</button>
-                <button>delete</button>
+                <button onClick={() => { dispatch(unTrashNote(note)) }}>restore</button>
+                <button onClick={() => { dispatch(deleteNote({ note, type: 'trash' })) }}>delete</button>
             </div >
         )
     }
