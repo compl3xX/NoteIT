@@ -8,7 +8,6 @@ const AllNotes = () => {
 
     const allNotes = useSelector(state => state.note.allNotes)
 
-
     return (
         <div>
             <NoteCard notes={allNotes} type="allnotes" />

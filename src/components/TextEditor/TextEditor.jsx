@@ -46,6 +46,7 @@ const TextEditor = ({ editorProps }) => {
 
 
         if (valid === 3) {
+            
             dispatch(noteAdd(note))
             dispatch(toggleCreateNodeModal(false))
             setContent('');

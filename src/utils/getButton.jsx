@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux"
 
 const getButton = ({ type, note, dispatch }) => {
 
-
-
     const editHandler = () => {
         dispatch(editNote(note))
         dispatch(toggleCreateNodeModal(true))

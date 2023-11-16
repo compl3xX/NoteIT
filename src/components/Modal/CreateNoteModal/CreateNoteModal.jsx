@@ -12,8 +12,6 @@ const CreateNoteModal = () => {
 
     const EditNote = useSelector(state => state.note.editNote)
 
-    // console.log(EditNote.title)
-
     const [title, setTitle] = useState(EditNote?.title || '');
 
     const [content, setContent] = useState(EditNote?.content || '');
