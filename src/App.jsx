@@ -1,7 +1,7 @@
 import './App.scss'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { AllNotes, ArchiveNotes, Tag, TrashNotes } from './pages/index'
-import { SideBar, NavBar, CreateNoteModal, CreateTagModal } from './components/index'
+import { SideBar, NavBar, CreateNoteModal, CreateTagModal, SearchBar } from './components/index'
 import { useSelector } from "react-redux"
 
 
@@ -21,6 +21,7 @@ function App() {
         <SideBar />
         <div className="subContainer">
           <NavBar />
+          <SearchBar />
 
           <Routes>
             <Route path="/" element={<AllNotes />} />

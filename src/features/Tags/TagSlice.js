@@ -4,7 +4,8 @@ import { v4 } from "uuid";
 
 const initialState = {
     tagList: [
-        { tagName: 'quote', id: v4() }
+        { tagName: 'quote', id: v4() },
+        { tagName: 'work', id: v4() }
     ]
 }
 
@@ -15,7 +16,7 @@ const TagSlice = createSlice({
 
         addTag: (state, { payload }) => {
 
-            if (state.tagList.find(({ tagName }) => (tagName === payload)) ) {
+            if (state.tagList.find(({ tagName }) => (tagName === payload))) {
                 toast.warning("Tag already exists");
             }
             else state.tagList.push({ tagName: payload, id: v4() })

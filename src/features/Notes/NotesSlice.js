@@ -60,6 +60,7 @@ const NotesSlice = createSlice({
         }
 
     }
+    
 })
 
 export default NotesSlice.reducer
