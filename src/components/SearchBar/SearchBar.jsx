@@ -18,12 +18,14 @@ const SearchBar = () => {
 
     const dispatch = useDispatch()
 
+    const searched = useSelector(state => state.search.searched)
+
     const searchFn = (note) => {
-        return note.title.toLowerCase().includes(searchText.toLowerCase())
+        return note.title.toLowerCase().includes(searched.toLowerCase())
     }
 
     const filterNotes = () => {
-        
+
 
         let filteredNotes;
 
@@ -41,7 +43,8 @@ const SearchBar = () => {
 
         else {
 
-            const tagNote = allNote.filter(({ tag }) => (tag.find(({ tagName }) => tagName === pathname.slice(5) )))
+            const tagNote = allNote.filter(({ tag }) => (tag.find(({ tagName }) => tagName === pathname.slice(5))))
+            
             filteredNotes = tagNote.filter((note) => (searchFn(note)))
         }
 
@@ -49,11 +52,20 @@ const SearchBar = () => {
 
     }
 
+    const handelKey = (e) => {
+        if (e.key === 'Enter') filterNotes();
+    }
+
+    const handelSearchMech = (e) => {
+        dispatch(searchTerm(e.target.value))
+        filterNotes()
+    }
+
     return (
 
         <div>
             <IoSearch />
-            <input onChange={(e) => { setSearchText(e.target.value) }} />
+            <input onChange={handelSearchMech} />
             <button onClick={filterNotes}>Search</button>
         </div>
     )

@@ -29,8 +29,15 @@ const NotesSlice = createSlice({
         },
 
         addToTrash: (state, { payload }) => {
-            state.trashNotes.push(payload)
-            state.allNotes = state.allNotes.filter(note => note.id !== payload.id)
+
+            console.log(payload)
+
+            state.trashNotes.push(payload.note)
+            
+            state.allNotes = state.allNotes.filter(note => note.id !== payload.note.id)
+
+            if (payload.type === 'archive')
+                state.archiveNotes = state.archiveNotes.filter(note => note.id !== payload.note.id)
         },
 
         editNote: (state, { payload }) => {
@@ -60,7 +67,7 @@ const NotesSlice = createSlice({
         }
 
     }
-    
+
 })
 
 export default NotesSlice.reducer

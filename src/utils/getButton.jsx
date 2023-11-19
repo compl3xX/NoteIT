@@ -13,7 +13,7 @@ const getButton = ({ type, note, dispatch }) => {
         return (
             < div >
                 <button onClick={() => { dispatch(unArchiveNote(note)) }}>unarchive</button>
-                <button onClick={() => { dispatch(deleteNote({ note, type: 'archive' })) }}>trash</button>
+                <button onClick={() => { dispatch(addToTrash({ note, type: 'archive' })) }}>trash</button>
             </div >
         )
     }
@@ -29,7 +29,7 @@ const getButton = ({ type, note, dispatch }) => {
         return (
             <div>
                 <button onClick={() => { dispatch(addToArchive(note)) }}>Archive</button>
-                <button onClick={() => { dispatch(addToTrash(note)) }}>Trash</button>
+                <button onClick={() => { dispatch(addToTrash({ note, type: 'else' })) }}>Trash</button>
                 <button onClick={editHandler}>Edit</button>
             </div>
         )
