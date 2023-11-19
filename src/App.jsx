@@ -15,7 +15,7 @@ function App() {
 
       {createNoteModal && <CreateNoteModal />}
 
-      {/* {editTagModal && <CreateTagModal />} */}
+      {editTagModal && <CreateTagModal mode="edit" />}
 
       <BrowserRouter>
         <SideBar />

@@ -20,12 +20,18 @@ const TagSlice = createSlice({
                 toast.warning("Tag already exists");
             }
             else state.tagList.push({ tagName: payload, id: v4() })
+        },
+
+        delTag: (state, { payload }) => {
+
+            state.tagList = state.tagList.filter(({ id }) => id !== payload)
+
         }
 
     }
 
 })
 
-export const { addTag } = TagSlice.actions;
+export const { addTag, delTag } = TagSlice.actions;
 
 export default TagSlice.reducer

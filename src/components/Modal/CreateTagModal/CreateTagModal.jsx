@@ -1,13 +1,14 @@
 import { useSelector, useDispatch } from "react-redux"
 import BaseModal from "../BaseModal/BaseModal"
-import { toggleCreateTagModal, addTag } from "../../../features";
+import { toggleCreateTagModal, addTag, delTag } from "../../../features";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa6";
+import { RxCross2 } from "react-icons/rx";
 
 
 
-const CreateTagModal = ({ handelTags, selTags }) => {
+const CreateTagModal = ({ mode, handelTags, selTags }) => {
 
     const [tagName, setTagName] = useState('')
 
@@ -16,9 +17,12 @@ const CreateTagModal = ({ handelTags, selTags }) => {
 
     const closeModal = () => {
         dispatch(toggleCreateTagModal({ type: 'add', view: false }))
+        dispatch(toggleCreateTagModal({ type: 'edit', view: false }))
     }
 
     const tags = useSelector(state => state.tag.tagList)
+
+    const { editTagModal } = useSelector(state => state.modal)
 
     const submitTag = () => {
         if (tagName.length > 0) {
@@ -40,15 +44,20 @@ const CreateTagModal = ({ handelTags, selTags }) => {
                 <input onChange={(e) => setTagName(e.target.value)} value={tagName} />
                 <button onClick={submitTag}>Submit</button>
                 {tags.map((tag) => (
-                    <li key={tag.id}
-                    >
+
+                    <li key={tag.id}>
+
                         {tag.tagName}
 
-                        {selTags?.find((selTag) => (selTag.tagName === tag.tagName)) ?
-                            (<FaMinus onClick={() => { addtagToNote({ tagName: tag.tagName, type: 'del' }) }} />) :
-                            (<FaPlus onClick={() => { addtagToNote({ tagName: tag.tagName, type: 'add' }) }} />)}
+                        { mode === 'edit'
+                            ? <><RxCross2 onClick={() => { dispatch(delTag(tag.id)) }} /></>
+                            : <>{selTags?.find((selTag) => (selTag.tagName === tag.tagName)) ?
+                                (<FaMinus onClick={() => { addtagToNote({ tagName: tag.tagName, type: 'del' }) }} />) :
+                                (<FaPlus onClick={() => { addtagToNote({ tagName: tag.tagName, type: 'add' }) }} />)}</>
+                        }
 
-                    </li>
+
+                    </li>   
                 ))}
             </div>
         </BaseModal>

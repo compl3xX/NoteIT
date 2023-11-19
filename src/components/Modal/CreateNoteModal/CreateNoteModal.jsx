@@ -43,7 +43,7 @@ const CreateNoteModal = () => {
         <BaseModal closeModal={closeModal}>
 
             <div>
-                {addTagModal && <CreateTagModal handelTags={handelTags} selTags={selTags} />}
+                {addTagModal && <CreateTagModal mode="add" handelTags={handelTags} selTags={selTags} />}
                 <TextEditor editorProps={{
                     title, setTitle, content,
                     setContent, setPriority, priority, selTags, setSelTags, handelTags, EditNote

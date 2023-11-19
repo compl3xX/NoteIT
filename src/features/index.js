@@ -7,6 +7,6 @@ export { noteAdd, addToArchive, addToTrash, editNote, pinNote, unArchiveNote, un
 
 export { toggleCreateNodeModal, toggleCreateTagModal } from './Modal/ModalSlice.js'
 
-export { addTag } from './Tags/TagSlice.js'
+export { addTag, delTag } from './Tags/TagSlice.js'
 
 export { searchTerm, searchNotes } from './Search/SearchSlice.js'
