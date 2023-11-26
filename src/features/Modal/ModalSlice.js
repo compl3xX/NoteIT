@@ -6,7 +6,9 @@ const initialState = {
 
     addTagModal: false,
 
-    editTagModal: false
+    editTagModal: false,
+
+    filterModal: false
 
 };
 
@@ -20,18 +22,23 @@ const ModalSlice = createSlice({
         },
 
         toggleCreateTagModal: (state, { payload }) => {
-            
+
             const { type, view } = payload
 
             if (type === 'add') state.addTagModal = view
-            
+
             else state.editTagModal = view
+
+        },
+
+        toggleFilterModal: (state, { payload }) => {
+            state.filterModal = payload
         }
 
     }
 
 })
 
-export const { toggleCreateNodeModal, toggleCreateTagModal } = ModalSlice.actions
+export const { toggleCreateNodeModal, toggleCreateTagModal, toggleFilterModal } = ModalSlice.actions
 
 export default ModalSlice.reducer

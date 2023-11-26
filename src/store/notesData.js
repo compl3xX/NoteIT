@@ -13,7 +13,7 @@ export const notesData = [
         priority: 'High',
         tag: [{ tagName: 'quote', id: v4() }],
         id: v4(),
-        date,
+        date: '11/10/2023',
         time,
         isPinned: true
     },
@@ -24,7 +24,7 @@ export const notesData = [
         priority: 'High',
         tag: [{ tagName: 'quote', id: v4() }],
         id: v4(),
-        date,
+        date: '11/05/2023',
         time,
         isPinned: true
     },
@@ -35,7 +35,7 @@ export const notesData = [
         priority: 'High',
         tag: [{ tagName: 'work', id: v4() }],
         id: v4(),
-        date,
+        date: '12/12/2023',
         time,
         isPinned: true
     }

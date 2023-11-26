@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { NotesReducer, ModalReducer, TagReducer, SearchReducer } from "../features";
+import { NotesReducer, ModalReducer, TagReducer, SearchReducer, FilterReducer } from "../features";
 
 export default configureStore({
     reducer: {
         note: NotesReducer,
         modal: ModalReducer,
         tag: TagReducer,
-        search: SearchReducer
+        search: SearchReducer,
+        filter: FilterReducer
     }
 })

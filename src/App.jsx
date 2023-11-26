@@ -1,13 +1,16 @@
 import './App.scss'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { AllNotes, ArchiveNotes, Tag, TrashNotes } from './pages/index'
-import { SideBar, NavBar, CreateNoteModal, CreateTagModal, SearchBar } from './components/index'
-import { useSelector } from "react-redux"
+import { SideBar, NavBar, CreateNoteModal, CreateTagModal, SearchBar, FilterModal } from './components/index'
+import { useSelector, useDispatch } from "react-redux"
+import { toggleFilterModal } from "./features"
 
 
 function App() {
 
-  const { editTagModal, createNoteModal } = useSelector(state => state.modal)
+  const { editTagModal, createNoteModal, filterModal } = useSelector(state => state.modal)
+
+  const dispatch = useDispatch()
 
   return (
 
@@ -22,7 +25,8 @@ function App() {
         <div className="subContainer">
           <NavBar />
           <SearchBar />
-
+          <button onClick={() => { dispatch(toggleFilterModal(true)) }}>Filter</button>
+          {filterModal && <FilterModal />}
           <Routes>
             <Route path="/" element={<AllNotes />} />
             <Route path="/archive" element={<ArchiveNotes />} />
