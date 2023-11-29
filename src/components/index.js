@@ -7,4 +7,5 @@ export { default as CreateNoteModal } from './Modal/CreateNoteModal/CreateNoteMo
 export { default as CreateTagModal } from './Modal/CreateTagModal/CreateTagModal'
 export { default as SearchBar } from './SearchBar/SearchBar'
 export { default as FilterModal } from './Modal/FilterModal/FilterModal'
+export { default as StyleWrapper } from './StyleWrapper/StyleWrapper'
 

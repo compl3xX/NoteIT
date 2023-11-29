@@ -1,5 +1,5 @@
 import React from 'react'
-import { NoteCard } from "../../components"
+import { NoteCard, StyleWrapper } from "../../components"
 import { useSelector } from "react-redux"
 
 
@@ -14,9 +14,9 @@ const ArchiveNotes = () => {
     if (searched.length > 0) notes = searchedNotes
 
     return (
-        <div>
+        <StyleWrapper>
             <NoteCard notes={notes} type="archive" />
-        </div>
+        </StyleWrapper>
     )
 }
 

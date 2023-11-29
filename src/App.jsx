@@ -24,8 +24,12 @@ function App() {
         <SideBar />
         <div className="subContainer">
           <NavBar />
-          <SearchBar />
-          <button onClick={() => { dispatch(toggleFilterModal(true)) }}>Filter</button>
+
+          <div className="subContainer_items">
+            <SearchBar />
+            <button onClick={() => { dispatch(toggleFilterModal(true)) }}>Filter</button>
+          </div>
+
           {filterModal && <FilterModal />}
           <Routes>
             <Route path="/" element={<AllNotes />} />

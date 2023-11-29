@@ -17,7 +17,32 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: red;
+  background-color: #b9c5c8;;
 }
 
+.subContainer_items {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
 
+  button {
+    width: 10%;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: rgb(187, 252, 187);
+    }
+  }
+}
+
+.get-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+}

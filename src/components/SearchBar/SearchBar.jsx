@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { searchTerm, searchNotes } from "../../features";
 
+import './SearchBar.scss'
+
 const SearchBar = () => {
 
     const [searchText, setSearchText] = useState("");
@@ -63,10 +65,10 @@ const SearchBar = () => {
 
     return (
 
-        <div>
-            <IoSearch />
-            <input onChange={handelSearchMech} />
-            <button onClick={filterNotes}>Search</button>
+        <div className="searchBar">
+            <IoSearch className="search-icon"/>
+            <input onChange={handelSearchMech} placeholder="Enter Title..."/>
+            {/* <button onClick={filterNotes}>Search</button> */}
         </div>
     )
 }

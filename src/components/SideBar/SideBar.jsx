@@ -9,6 +9,7 @@ import { BiSolidArchive, BiSolidTrash } from 'react-icons/bi';
 import { FaNoteSticky } from "react-icons/fa6"
 import { AiFillTag } from 'react-icons/ai'
 import { toggleCreateTagModal } from "../../features";
+import { FaRegEdit } from "react-icons/fa";
 
 
 const navItems = [{ icon: <BiSolidArchive />, title: 'Archive', id: v4() },
@@ -23,7 +24,8 @@ const SideBar = () => {
 
     return (
         <div className="sidebar">
-            <div>Logo</div>
+            <div className="sidebar-logo">
+            <img src="/src/assets/logo.png"/></div>
             <ul>
 
                 <li>
@@ -42,7 +44,9 @@ const SideBar = () => {
                     ))
                 }
 
-                <li onClick={() => {dispatch(toggleCreateTagModal({ type: 'edit', view: true })) }}>Edit Tags</li>
+                <li onClick={() => { dispatch(toggleCreateTagModal({ type: 'edit', view: true })) }}>
+                    <div className="sidebar-content-items"><FaRegEdit />Edit Tags</div>
+                </li>
 
 
                 {

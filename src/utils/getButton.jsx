@@ -1,5 +1,9 @@
 import { addToArchive, addToTrash, editNote, toggleCreateNodeModal, unArchiveNote, unTrashNote, deleteNote } from "../features"
 
+import { MdOutlineArchive, MdOutlineUnarchive } from "react-icons/md";
+import { FaTrashCanArrowUp } from "react-icons/fa6";
+import { FaTrash } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import { useDispatch } from "react-redux"
 
 const getButton = ({ type, note, dispatch }) => {
@@ -11,26 +15,26 @@ const getButton = ({ type, note, dispatch }) => {
 
     if (type === 'archive') {
         return (
-            < div >
-                <button onClick={() => { dispatch(unArchiveNote(note)) }}>unarchive</button>
-                <button onClick={() => { dispatch(addToTrash({ note, type: 'archive' })) }}>trash</button>
+            < div className="get-btn" >
+                <MdOutlineUnarchive onClick={() => { dispatch(unArchiveNote(note)) }} />
+                <FaTrash onClick={() => { dispatch(addToTrash({ note, type: 'archive' })) }} />
             </div >
         )
     }
     else if (type === 'trash') {
         return (
-            < div >
-                <button onClick={() => { dispatch(unTrashNote(note)) }}>restore</button>
-                <button onClick={() => { dispatch(deleteNote({ note, type: 'trash' })) }}>delete</button>
+            < div className="get-btn">
+                <FaTrashCanArrowUp onClick={() => { dispatch(unTrashNote(note)) }} />
+                <FaTrash onClick={() => { dispatch(deleteNote({ note, type: 'trash' })) }} />
             </div >
         )
     }
     else {
         return (
-            <div>
-                <button onClick={() => { dispatch(addToArchive(note)) }}>Archive</button>
-                <button onClick={() => { dispatch(addToTrash({ note, type: 'else' })) }}>Trash</button>
-                <button onClick={editHandler}>Edit</button>
+            <div className="get-btn">
+                <MdOutlineArchive onClick={() => { dispatch(addToArchive(note)) }} />
+                <FaTrash onClick={() => { dispatch(addToTrash({ note, type: 'else' })) }} />
+                <FaEdit onClick={editHandler}/>
             </div>
         )
     }

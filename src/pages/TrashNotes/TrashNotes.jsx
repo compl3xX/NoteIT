@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { NoteCard } from "../../components"
+import { NoteCard, StyleWrapper } from "../../components"
 
 const TrashNotes = () => {
 
@@ -12,7 +12,9 @@ const TrashNotes = () => {
     if (searched.length > 0) notes = searchedNotes
 
     return (
-        <NoteCard notes={notes} type="trash" />
+        <StyleWrapper>
+            <NoteCard notes={notes} type="trash" />
+        </StyleWrapper>
     )
 }
 

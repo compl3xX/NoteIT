@@ -1,4 +1,25 @@
 .NavBar {
-    background-color: #4CC9F0;
-    height:80px;
+  background-color: #c9d4d7;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2%;
+
+  button {
+    width: 20%;
+    height: 50%;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    &:hover {
+      background-color: rgb(206, 250, 206);
+    }
+  }
 }

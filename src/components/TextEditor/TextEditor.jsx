@@ -8,6 +8,7 @@ import { FaTimes } from "react-icons/fa";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './TextEditor.scss'
 
 const TextEditor = ({ editorProps }) => {
 
@@ -46,7 +47,7 @@ const TextEditor = ({ editorProps }) => {
 
 
         if (valid === 3) {
-            
+
             dispatch(noteAdd(note))
             dispatch(toggleCreateNodeModal(false))
             setContent('');
@@ -83,24 +84,32 @@ const TextEditor = ({ editorProps }) => {
 
     return (
         <div >
-            <p>Title</p>
-            <input ref={titleRef} onChange={(e) => { setTitle(e.target.value) }} value={title} />
-            <p>Content</p>
-            <textarea ref={contentRef}
-                onChange={(e) => { setContent(e.target.value) }}
-                style={{ height: "200px", width: "600px", resize: "none" }}
-                value={content} />
-            <div>
+            <div className="editor-input">
+              
+                    <input ref={titleRef}
+                        onChange={(e) => { setTitle(e.target.value) }}
+                        value={title}
+                        placeholder="Enter Title ...." />
+                
+                <div>
+                    <textarea ref={contentRef}
+                        onChange={(e) => { setContent(e.target.value) }}
+                        style={{ height: "200px", width: "600px", resize: "none" }}
+                        value={content}
+                        placeholder=" Write content over here..." />
+                </div>
+            </div>
+            <div className="editor-tag">
                 {
-                    selTags.map((seltag) => (<span key={seltag.id}>
+                    selTags.map((seltag) => (<span className="tags" key={seltag.id}>
                         {seltag.tagName}
                         <FaTimes onClick={() => { handelTags({ tag: seltag.tagName, type: 'del' }) }} />
                     </span>))
                 }
             </div>
 
-            <div>
-                <button onClick={() => { dispatch(toggleCreateTagModal({ type: 'add', view: true })) }}>Tag</button>
+            <div className="editor-btn">
+                <button onClick={() => { dispatch(toggleCreateTagModal({ type: 'add', view: true })) }}>Add Tags</button>
                 <label>
                     Priority:
                     <select onChange={e => setPriority(e.target.value)} value={priority}>

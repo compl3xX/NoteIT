@@ -6,6 +6,8 @@ import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 
+import './CreateTagModal.scss'
+
 
 
 const CreateTagModal = ({ mode, handelTags, selTags }) => {
@@ -40,16 +42,19 @@ const CreateTagModal = ({ mode, handelTags, selTags }) => {
 
     return (
         <BaseModal closeModal={closeModal}>
-            <div>
-                <input onChange={(e) => setTagName(e.target.value)} value={tagName} />
-                <button onClick={submitTag}>Submit</button>
+            <div className="tag-container">
+                <div className="tag-inputs">
+                    <input onChange={(e) => setTagName(e.target.value)} value={tagName} />
+                    <button onClick={submitTag}>Submit</button>
+                </div>
+
                 {tags.map((tag) => (
 
                     <li key={tag.id}>
 
                         {tag.tagName}
 
-                        { mode === 'edit'
+                        {mode === 'edit'
                             ? <><RxCross2 onClick={() => { dispatch(delTag(tag.id)) }} /></>
                             : <>{selTags?.find((selTag) => (selTag.tagName === tag.tagName)) ?
                                 (<FaMinus onClick={() => { addtagToNote({ tagName: tag.tagName, type: 'del' }) }} />) :
@@ -57,7 +62,7 @@ const CreateTagModal = ({ mode, handelTags, selTags }) => {
                         }
 
 
-                    </li>   
+                    </li>
                 ))}
             </div>
         </BaseModal>

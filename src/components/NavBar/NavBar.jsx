@@ -2,6 +2,7 @@ import React from 'react'
 import './NavBar.scss'
 import { useDispatch, useSelector } from "react-redux"
 import { toggleCreateNodeModal } from "../../features"
+import { FaPlus } from "react-icons/fa6";
 
 import { useLocation } from "react-router-dom"
 
@@ -17,7 +18,8 @@ const NavBar = () => {
 
     return (
         <div className="NavBar">
-            {hidden && <button onClick={() => { dispatch(toggleCreateNodeModal(true)) }}>Create</button>}
+            
+            {hidden && <button onClick={() => { dispatch(toggleCreateNodeModal(true)) }}><FaPlus />Create</button>}
         </div>
     )
 }

@@ -1,9 +1,29 @@
 .note-card {
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   background-color: white;
   border: solid 2px black;
   margin: 10px;
   border-radius: 10px;
-  padding: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.note-card-time-date {
+  display: flex;
+  font-size: smaller;
+  justify-content: space-between;
+}
+
+.note-card-title {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10%;
+}
+
+.note-card-btn {
+  display: flex;
+  justify-content: space-between;
 }

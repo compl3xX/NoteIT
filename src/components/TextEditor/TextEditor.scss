@@ -1,10 +1,20 @@
-.tag-container {
+.editor-input {
   display: flex;
   flex-direction: column;
+  gap: 5px;
   width: 100%;
+  border: none;
 
+
+}
+
+.editor-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
   button {
-    width: 25%;
+    width: 20%;
     height: 50%;
     background-color: white;
     border: 1 px solid black;
@@ -20,14 +30,16 @@
     }
   }
 }
-.tag-inputs {
+
+.editor-tag {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  flex-direction: row;
+  height: 20px;
 }
 
-li {
+.tags {
   display: flex;
-  margin-top: 10px;
-  gap: 5px;
+  flex-direction: row;
+  margin-top: 5px;
+  padding: 5px;
 }

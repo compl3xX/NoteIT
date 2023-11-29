@@ -1,5 +1,5 @@
 
-import { NoteCard } from "../../components"
+import { NoteCard, StyleWrapper } from "../../components"
 
 import { useSelector } from "react-redux"
 
@@ -19,9 +19,9 @@ const AllNotes = () => {
     if (filterOn)notes=dateFilteredNotes
 
     return (
-        <div>
+        <StyleWrapper>
             <NoteCard notes={notes} type="allnotes" />
-        </div>
+        </StyleWrapper>
     )
 }
 
