@@ -34,7 +34,8 @@ const ModalSlice = createSlice({
         toggleFilterModal: (state, { payload }) => {
             state.filterModal = payload
         }
-
+           
+            
     }
 
 })

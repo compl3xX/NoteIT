@@ -27,3 +27,36 @@
   display: flex;
   justify-content: space-between;
 }
+
+.note-card-priority {
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: small;
+  padding: 2px;
+}
+
+.note-card-tag {
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: small;
+  padding: 2px;
+  background-color: rgb(194, 189, 189);
+}
+
+.note-card-empty {
+  font-size: larger;
+  font-style: italic;
+  margin:20px
+}
+
+.high-priority {
+  background-color: rgb(255, 88, 88);
+}
+
+.mid-priority {
+  background-color: orange;
+}
+
+.low-priority {
+  background-color: rgb(10, 211, 10);
+}

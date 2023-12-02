@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux"
 import BaseModal from "../BaseModal/BaseModal"
 import { dateFilter, toggleFilterModal, clearFilter } from "../../../features"
 import { useLocation } from "react-router-dom"
-
+import './FilterModal.scss'
 
 
 const FilterModal = () => {
@@ -49,12 +49,14 @@ const FilterModal = () => {
 
     return (
         <BaseModal closeModal={closeModal}>
-            <div>
-                <div>Date :-
+            <div className="filterModal">
+                <div className="filterModal-date">
+                    <span className="filterModal-date-title">Date :-</span>
                     <button onClick={() => { dispatch(dateFilter({ notes, type: 'lowToHigh' })) }}>INC</button>
                     <button>DEC</button>
                 </div>
-                <div>Priority :-
+                <div className="filterModal-priority">
+                    <span>Priority :-</span>
                     <button>INC</button>
                     <button>DEC</button>
                 </div>

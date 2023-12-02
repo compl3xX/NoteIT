@@ -3,6 +3,8 @@ import { NoteCard, StyleWrapper } from "../../components"
 
 import { useSelector } from "react-redux"
 
+import './AllNotes.scss'
+
 
 const AllNotes = () => {
 
@@ -16,11 +18,36 @@ const AllNotes = () => {
 
     if (searched.length > 0) notes = searchedNotes
 
-    if (filterOn)notes=dateFilteredNotes
+    if (filterOn) notes = dateFilteredNotes
+
+    const pinnedNotes = notes.filter((note) => (note.isPinned))
+
+    const notPinnedNotes = notes.filter((note) => (!note.isPinned))
+
+    notes = notPinnedNotes
 
     return (
         <StyleWrapper>
-            <NoteCard notes={notes} type="allnotes" />
+
+            <div>
+                <div>
+
+                    {pinnedNotes.length > 0 ?
+                        <>
+                            <p className="pin-title">Pinned Notes</p>
+                            <div
+                                style={{ display: 'flex' }}> <NoteCard notes={pinnedNotes} type="allnotes" />
+                            </div>
+                        </> : ""}
+                </div>
+                <p className="pin-title">Other Notes</p>
+                <div style={{ display: 'flex' }}>
+                    
+                    <NoteCard notes={notes} type="allnotes" />
+                </div>
+            </div>
+
+
         </StyleWrapper>
     )
 }

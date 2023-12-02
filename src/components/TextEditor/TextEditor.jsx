@@ -30,7 +30,9 @@ const TextEditor = ({ editorProps }) => {
         bgColor: 'green',
         priority,
         tag: selTags,
-        isPinned: false
+        isPinned: false,
+        isDetailed: false
+
     }
 
     if (EditNote) {

@@ -15,7 +15,8 @@ export const notesData = [
         id: v4(),
         date: '11/10/2023',
         time,
-        isPinned: true
+        isPinned: true,
+        isDetailed: false
     },
     {
         title: "123",
@@ -26,7 +27,8 @@ export const notesData = [
         id: v4(),
         date: '11/05/2023',
         time,
-        isPinned: true
+        isPinned: false,
+        isDetailed: false
     },
     {
         title: "abc",
@@ -37,7 +39,8 @@ export const notesData = [
         id: v4(),
         date: '12/12/2023',
         time,
-        isPinned: true
+        isPinned: true,
+        isDetailed: false
     }
 ]
 

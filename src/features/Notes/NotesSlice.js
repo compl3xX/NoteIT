@@ -33,7 +33,7 @@ const NotesSlice = createSlice({
             console.log(payload)
 
             state.trashNotes.push(payload.note)
-            
+
             state.allNotes = state.allNotes.filter(note => note.id !== payload.note.id)
 
             if (payload.type === 'archive')
@@ -64,6 +64,13 @@ const NotesSlice = createSlice({
 
             if (payload.type === 'trash') state.trashNotes = state.trashNotes.filter(note => note.id !== payload.note.id)
             else state.archiveNotes = state.archiveNotes.filter(note => note.id !== payload.note.id)
+        },
+
+        viewNote: (state, { payload }) => {
+            
+            const idx = state.allNotes.findIndex(({ id }) => (id === payload.noteId))
+            state.allNotes[idx].isDetailed = !payload.isDetailed
+
         }
 
     }
@@ -72,4 +79,4 @@ const NotesSlice = createSlice({
 
 export default NotesSlice.reducer
 
-export const { noteAdd, addToArchive, addToTrash, editNote, pinNote, unArchiveNote, unTrashNote, deleteNote } = NotesSlice.actions;
+export const { noteAdd, addToArchive, addToTrash, editNote, pinNote, unArchiveNote, unTrashNote, deleteNote, viewNote } = NotesSlice.actions;
