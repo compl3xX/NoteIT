@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux"
 import BaseModal from "../BaseModal/BaseModal"
-import { toggleCreateTagModal, addTag, delTag } from "../../../features";
+import { toggleCreateTagModal, addTag, delTag, rmTagNote } from "../../../features";
 import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa6";
@@ -40,6 +40,13 @@ const CreateTagModal = ({ mode, handelTags, selTags }) => {
 
     }
 
+    const rmTagNotes = ({ id, tagName }) => {
+        dispatch(delTag(id))
+        dispatch(rmTagNote(tagName))
+    }
+
+
+
     return (
         <BaseModal closeModal={closeModal}>
             <div className="tag-container">
@@ -55,7 +62,7 @@ const CreateTagModal = ({ mode, handelTags, selTags }) => {
                         {tag.tagName}
 
                         {mode === 'edit'
-                            ? <><RxCross2 onClick={() => { dispatch(delTag(tag.id)) }} /></>
+                            ? <><RxCross2 onClick={() => { rmTagNotes({ id: tag.id, tagName: tag.tagName }) }} /></>
                             : <>{selTags?.find((selTag) => (selTag.tagName === tag.tagName)) ?
                                 (<FaMinus onClick={() => { addtagToNote({ tagName: tag.tagName, type: 'del' }) }} />) :
                                 (<FaPlus onClick={() => { addtagToNote({ tagName: tag.tagName, type: 'add' }) }} />)}</>

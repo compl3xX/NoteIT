@@ -4,7 +4,7 @@ export { default as TagReducer } from './Tags/TagSlice.js'
 export { default as SearchReducer } from './Search/SearchSlice.js'
 export { default as FilterReducer } from './Filter/FilterSlice.js'
 
-export { noteAdd, addToArchive, addToTrash, editNote, pinNote, unArchiveNote, unTrashNote, deleteNote, viewNote } from './Notes/NotesSlice'
+export { noteAdd, addToArchive, addToTrash, editNote, pinNote, unArchiveNote, unTrashNote, deleteNote, viewNote,rmTagNote } from './Notes/NotesSlice'
 
 export { toggleCreateNodeModal, toggleCreateTagModal, toggleFilterModal } from './Modal/ModalSlice.js'
 

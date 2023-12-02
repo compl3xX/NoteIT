@@ -67,9 +67,32 @@ const NotesSlice = createSlice({
         },
 
         viewNote: (state, { payload }) => {
-            
+
             const idx = state.allNotes.findIndex(({ id }) => (id === payload.noteId))
             state.allNotes[idx].isDetailed = !payload.isDetailed
+
+        },
+
+        rmTagNote: (state, { payload }) => {
+
+            console.log(payload)
+            
+            const newAllNotes = state.allNotes.map((note) => {
+
+                const arr = note.tag
+                let newTag = []
+                for (let i = 0; i < arr.length; i++) {
+                    if (arr[i].tagName !== payload) newTag.push(arr[i]);
+                }
+
+                note.tag = newTag
+
+                return note
+
+            })
+
+            state.allNotes = newAllNotes
+
 
         }
 
@@ -79,4 +102,4 @@ const NotesSlice = createSlice({
 
 export default NotesSlice.reducer
 
-export const { noteAdd, addToArchive, addToTrash, editNote, pinNote, unArchiveNote, unTrashNote, deleteNote, viewNote } = NotesSlice.actions;
+export const { noteAdd, addToArchive, addToTrash, editNote, pinNote, unArchiveNote, unTrashNote, deleteNote, viewNote, rmTagNote } = NotesSlice.actions;
