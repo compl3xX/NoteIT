@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux";
-import { NoteCard, StyleWrapper } from "../../components";
+import { NoteCard, StyleWrapper,Sections } from "../../components";
+
 
 const Tag = () => {
 
@@ -24,11 +25,17 @@ const Tag = () => {
 
     if (searched.length > 0) notes = searchedNotes
 
+    const pinnedNotes = notes.filter((note) => (note.isPinned))
+
+    const notPinnedNotes = notes.filter((note) => (!note.isPinned))
+
+    notes = notPinnedNotes
+
     console.log(tagNotes)
 
     return (
         <StyleWrapper>
-            <NoteCard notes={notes} />
+            <Sections pinnedNotes={pinnedNotes} notes={notes} />
         </StyleWrapper>
     )
 }

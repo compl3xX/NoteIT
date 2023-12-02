@@ -1,5 +1,5 @@
 
-import { NoteCard, StyleWrapper } from "../../components"
+import { NoteCard, Sections, StyleWrapper } from "../../components"
 
 import { useSelector } from "react-redux"
 
@@ -28,26 +28,7 @@ const AllNotes = () => {
 
     return (
         <StyleWrapper>
-
-            <div>
-                <div>
-
-                    {pinnedNotes.length > 0 ?
-                        <>
-                            <p className="pin-title">Pinned Notes</p>
-                            <div
-                                style={{ display: 'flex' }}> <NoteCard notes={pinnedNotes} type="allnotes" />
-                            </div>
-                        </> : ""}
-                </div>
-                <p className="pin-title">Other Notes</p>
-                <div style={{ display: 'flex' }}>
-                    
-                    <NoteCard notes={notes} type="allnotes" />
-                </div>
-            </div>
-
-
+            <Sections pinnedNotes={pinnedNotes} notes={notes} />
         </StyleWrapper>
     )
 }

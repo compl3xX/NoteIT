@@ -9,4 +9,5 @@ export { default as SearchBar } from './SearchBar/SearchBar'
 export { default as FilterModal } from './Modal/FilterModal/FilterModal'
 export { default as StyleWrapper } from './StyleWrapper/StyleWrapper'
 export { default as ViewNoteModal } from './Modal/ViewNoteModal/ViewNoteModal'
+export { default as Sections } from './Sections/Sections'
 
