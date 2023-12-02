@@ -10,6 +10,7 @@ import { FaNoteSticky } from "react-icons/fa6"
 import { AiFillTag } from 'react-icons/ai'
 import { toggleCreateTagModal } from "../../features";
 import { FaRegEdit } from "react-icons/fa";
+import logo from '../../assets/logo.png'
 
 
 const navItems = [{ icon: <BiSolidArchive />, title: 'Archive', id: v4() },
@@ -25,7 +26,7 @@ const SideBar = () => {
     return (
         <div className="sidebar">
             <div className="sidebar-logo">
-            <img src="/src/assets/logo.png"/></div>
+                <img src={logo} /></div>
             <ul>
 
                 <li>
