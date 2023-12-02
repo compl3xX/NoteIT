@@ -23,7 +23,7 @@ const NoteCard = ({ notes, type }) => {
                     < div key={note.id} className="note-card" >
 
                         <div className="note-card-title">
-                            <span onClick={() => { dispatch(pinNote({ isPinned: note.isPinned, noteId: note.id })) }}>{note.isPinned ? <TbPinnedFilled /> : <TbPinned />}</span>
+                            <span style={{ cursor: 'pointer' }} onClick={() => { dispatch(pinNote({ isPinned: note.isPinned, noteId: note.id })) }}>{note.isPinned ? <TbPinnedFilled /> : <TbPinned />}</span>
                             <span>{note.title}</span>
                         </div>
 
