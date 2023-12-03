@@ -83,7 +83,7 @@ const SideBar = () => {
 
         {navItems.map(({ icon, title, id }) => (
           <li key={id}>
-            <NavLink to={`/ ${title.toLowerCase()} `}>
+            <NavLink to={`/${title.toLowerCase()}`}>
               <div className="sidebar-content-items">
                 {icon}
                 <span>{title}</span>
