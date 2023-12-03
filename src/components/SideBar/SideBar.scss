@@ -1,6 +1,6 @@
 .sidebar {
-  background-color: #5d37d8;
-  color: white;
+  background-color: #f5f5f5;
+  // color: white;
   position: sticky;
   top: 0;
   max-height: 100vh;
@@ -18,7 +18,7 @@
 .sidebar-content {
   display: flex;
   flex-direction: row;
-  color: white;
+  // color: white;
 }
 .sidebar-content-items {
   display: flex;
@@ -27,14 +27,8 @@
   align-items: center;
   padding: 10px;
   cursor: pointer;
-  color: white;
+  // color: white;
 }
 .sidebar-logo {
   height: 80px;
-}
-
-@media (max-width: 600px) {
-  .sidebar {
-    display: none;
-  }
 }
