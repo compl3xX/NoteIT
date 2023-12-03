@@ -61,7 +61,7 @@ const SideBar = () => {
 
         {tags.map(({ tagName, id }) => (
           <li key={id}>
-            <NavLink to={`/ tag / ${tagName} `}>
+            <NavLink to={`/tag/${tagName} `}>
               <div className="sidebar-content-items">
                 <AiFillTag />
                 {tagName}
