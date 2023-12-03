@@ -1,26 +1,28 @@
-import React from 'react'
-import NoteCard from "../NoteCard/NoteCard"
+import React from "react";
+import NoteCard from "../NoteCard/NoteCard";
 
 const Sections = ({ pinnedNotes, notes }) => {
-    return (
-        <div>
-            <div>
-
-                {pinnedNotes.length > 0 ?
-                    <>
-                        <p className="pin-title">Pinned Notes</p>
-                        <div
-                            style={{ display: 'flex' }}> <NoteCard notes={pinnedNotes} type="allnotes" />
-                        </div>
-                    </> : ""}
+  return (
+    <div style={{ width: "98%" }}>
+      <div>
+        {pinnedNotes.length > 0 ? (
+          <>
+            <p className="pin-title">Pinned Notes</p>
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+              {" "}
+              <NoteCard notes={pinnedNotes} type="allnotes" />
             </div>
-            <p className="pin-title">Other Notes</p>
-            <div style={{ display: 'flex' }}>
+          </>
+        ) : (
+          ""
+        )}
+      </div>
+      <p className="pin-title">Other Notes</p>
+      <div style={{ display: "flex" }}>
+        <NoteCard notes={notes} type="allnotes" />
+      </div>
+    </div>
+  );
+};
 
-                <NoteCard notes={notes} type="allnotes" />
-            </div>
-        </div>
-    )
-}
-
-export default Sections
+export default Sections;

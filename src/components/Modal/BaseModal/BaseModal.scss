@@ -17,6 +17,8 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90vw;
+  max-width: 700px;
 }
 
 .close {
@@ -28,8 +30,8 @@
   color: #555;
 }
 
-.close-btn{
-  float:  right ;
+.close-btn {
+  float: right;
   margin-bottom: 8px;
   cursor: pointer;
 }

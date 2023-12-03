@@ -46,7 +46,7 @@
 .note-card-empty {
   font-size: larger;
   font-style: italic;
-  margin:20px
+  margin: 20px;
 }
 
 .high-priority {
@@ -59,4 +59,10 @@
 
 .low-priority {
   background-color: rgb(10, 211, 10);
+}
+
+@media (max-width: 500px) {
+  .note-card {
+    width: 90vw;
+  }
 }
