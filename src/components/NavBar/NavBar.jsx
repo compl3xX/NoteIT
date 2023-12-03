@@ -2,6 +2,7 @@ import React from "react";
 import "./NavBar.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCreateNodeModal, toggleMenu } from "../../features";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 import { FaPlus } from "react-icons/fa6";
 
@@ -20,7 +21,7 @@ const NavBar = () => {
 
   return (
     <div className="NavBar">
-      <button onClick={() => { dispatch(toggleMenu(isOpen)) }} className="ToggleBtn" > Toggle</button>
+      <button onClick={() => { dispatch(toggleMenu(isOpen)) }} className="ToggleBtn" ><GiHamburgerMenu/></button>
       {
         hidden && (
           <button
