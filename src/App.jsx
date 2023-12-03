@@ -10,20 +10,26 @@ import {
   FilterModal,
 } from "./components/index";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleFilterModal } from "./features";
+import { toggleFilterModal, toggleMenu } from "./features";
+
 
 function App() {
   const { editTagModal, createNoteModal, filterModal } = useSelector(
     (state) => state.modal
   );
+  const isOpen = useSelector(state => state.menu.isOpen)
+  console.log(isOpen)
 
   const dispatch = useDispatch();
 
   return (
     <div className="mainContainer">
+
       {createNoteModal && <CreateNoteModal />}
 
       {editTagModal && <CreateTagModal mode="edit" />}
+
+      {isOpen && <div onClick={() => { dispatch(toggleMenu(isOpen)) }} className="backdrop" ></div>}
 
       <BrowserRouter>
         <SideBar />
@@ -51,7 +57,7 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
-    </div>
+    </div >
   );
 }
 

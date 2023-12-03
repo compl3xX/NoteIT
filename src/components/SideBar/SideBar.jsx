@@ -1,5 +1,5 @@
 import "./SideBar.scss";
-
+import { useEffect } from "react";
 import { v4 } from "uuid";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { BiSolidArchive, BiSolidTrash } from "react-icons/bi";
 import { FaNoteSticky } from "react-icons/fa6";
 import { AiFillTag } from "react-icons/ai";
-import { toggleCreateTagModal } from "../../features";
+import { toggleCreateTagModal, toggleMenu } from "../../features";
 import { FaRegEdit } from "react-icons/fa";
 import logo from "../../assets/logo.png";
 
@@ -18,15 +18,37 @@ const navItems = [
 ];
 
 const SideBar = () => {
-  const tags = useSelector((state) => state.tag.tagList);
 
+  const tags = useSelector((state) => state.tag.tagList);
+  const isOpen = useSelector(state => state.menu.isOpen);
   const dispatch = useDispatch();
 
+  const closeSidebarOnResize = () => {
+    const sidebar = document.querySelector('.sidebar');
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth > 500 && isOpen) {
+      dispatch(toggleMenu(isOpen));
+    }
+  };
+
+  useEffect(() => {
+
+    window.addEventListener('resize', closeSidebarOnResize);
+
+    return () => {
+      window.removeEventListener('resize', closeSidebarOnResize);
+    };
+
+  }, [isOpen]);
+
+
+
   return (
-    <div className="sidebar">
-      <div className="sidebar-logo">
-        <img src={logo} />
-      </div>
+    <div className={`${isOpen ? 'open' : 'sidebar'} `}>
+      < div className="sidebar-logo" >
+        < img src={logo} />
+      </div >
       <ul>
         <li>
           <NavLink to="/">
@@ -39,7 +61,7 @@ const SideBar = () => {
 
         {tags.map(({ tagName, id }) => (
           <li key={id}>
-            <NavLink to={`/tag/${tagName}`}>
+            <NavLink to={`/ tag / ${tagName} `}>
               <div className="sidebar-content-items">
                 <AiFillTag />
                 {tagName}
@@ -61,7 +83,7 @@ const SideBar = () => {
 
         {navItems.map(({ icon, title, id }) => (
           <li key={id}>
-            <NavLink to={`/${title.toLowerCase()}`}>
+            <NavLink to={`/ ${title.toLowerCase()} `}>
               <div className="sidebar-content-items">
                 {icon}
                 <span>{title}</span>
@@ -70,7 +92,7 @@ const SideBar = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </div >
   );
 };
 

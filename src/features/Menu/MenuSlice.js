@@ -11,7 +11,8 @@ const menuSlice = createSlice({
     initialState,
     reducers: {
         toggleMenu: (state, { payload }) => {
-            state.isOpen = payload
+            console.log(payload)
+            state.isOpen = !payload
         }
     }
 })

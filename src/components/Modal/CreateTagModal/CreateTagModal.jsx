@@ -46,7 +46,7 @@ const CreateTagModal = ({ mode, handelTags, selTags }) => {
   };
 
   return (
-    <BaseModal closeModal={closeModal} modalStyles={{ maxWidth: "300px" }}>
+    <BaseModal closeModal={closeModal} modalStyles={{ maxWidth: "250px" }}>
       <div className="tag-container">
         <div className="tag-inputs">
           <input onChange={(e) => setTagName(e.target.value)} value={tagName} />

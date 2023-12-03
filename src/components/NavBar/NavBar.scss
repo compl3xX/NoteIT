@@ -25,4 +25,22 @@
       background-color: rgb(206, 250, 206);
     }
   }
+  .ToggleBtn {
+    display: none;
+    @media (max-width: 500px) {
+    
+        display: block;
+    
+    }
+  }
+}
+@media (max-width: 500px) {
+  .NavBar {
+    justify-content: space-between;
+    padding-left: 2%;
+  }
+  .ToggleBtn {
+    display: block;
+
+  }
 }
