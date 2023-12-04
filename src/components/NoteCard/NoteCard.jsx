@@ -11,19 +11,17 @@ import ViewNoteModal from "../Modal/ViewNoteModal/ViewNoteModal";
 const NoteCard = ({ notes, type }) => {
 
     const dispatch = useDispatch();
-
-    console.log(notes.length)
-
+    
     return (
 
         notes.length > 0 ?
             notes.map((note) => (
                 <div key={note.id}>
                     {note.isDetailed && <ViewNoteModal note={note} />}
-                    < div key={note.id} className="note-card" >
+                    <div key={note.id} className="note-card" >
 
                         <div className="note-card-title">
-                            <span style={{ cursor: 'pointer' }} onClick={() => { dispatch(pinNote({ isPinned: note.isPinned, noteId: note.id })) }}>{note.isPinned ? <TbPinnedFilled /> : <TbPinned />}</span>
+                            <span style={{cursor:'pointer'}} onClick={() => {dispatch(pinNote({ isPinned: note.isPinned, noteId: note.id })) }}>{note.isPinned ? <TbPinnedFilled /> : <TbPinned />}</span>
                             <span>{note.title}</span>
                         </div>
 

@@ -9,9 +9,17 @@ const ArchiveNotes = () => {
     const searched = useSelector(state => state.search.searched)
     const searchedNotes = useSelector(state => state.search.searchedNotes)
 
+    const dateFilteredNotes = useSelector(state => state.filter.datefiltered)
+    const priorityFilteredNotes = useSelector(state => state.filter.priorityfiltered)
+    const filterOn = useSelector(state => state.filter.filterOn)
+
     let notes = archive;
 
     if (searched.length > 0) notes = searchedNotes
+
+    if (filterOn.length > 0) notes = filterOn === 'date' ? dateFilteredNotes : priorityFilteredNotes
+
+    
 
     return (
         <StyleWrapper>

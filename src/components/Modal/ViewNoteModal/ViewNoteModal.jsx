@@ -12,7 +12,7 @@ const ViewNoteModal = ({ note }) => {
   };
 
   return (
-    <BaseModal closeModal={closeModal}>
+    <BaseModal closeModal={closeModal} modalStyles={{maxWidth: "300px"}}>
       <div className="note-content">{note.content}</div>
     </BaseModal>
   );

@@ -6,6 +6,7 @@ import { toggleCreateNodeModal } from "../../../features";
 import { useDispatch } from "react-redux";
 
 const BaseModal = ({ children, closeModal, modalStyles }) => {
+
   const dispatch = useDispatch();
 
   const handleClose = () => {
@@ -13,6 +14,7 @@ const BaseModal = ({ children, closeModal, modalStyles }) => {
   };
 
   return createPortal(
+    
     <div className="modal">
       <div
         className="modal-content"

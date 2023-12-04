@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from "react-redux";
 import BaseModal from "../BaseModal/BaseModal";
-import { dateFilter, toggleFilterModal, clearFilter } from "../../../features";
+import { dateFilter, toggleFilterModal, clearFilter, priorityFilter } from "../../../features";
 import { useLocation } from "react-router-dom";
 import "./FilterModal.scss";
 
 const FilterModal = () => {
+
   const dispatch = useDispatch();
 
   const { pathname } = useLocation();
@@ -24,6 +25,8 @@ const FilterModal = () => {
   const trashNotes = useSelector((state) => state.note.trashNotes);
 
   const archiveNotes = useSelector((state) => state.note.archiveNotes);
+
+  const filterOn = useSelector(state => state.filter.filterOn)
 
   let tagNotes = [];
 
@@ -45,32 +48,46 @@ const FilterModal = () => {
 
   return (
     <BaseModal closeModal={closeModal} modalStyles={{ maxWidth: "300px" }}>
+
       <div className="filterModal">
         <div className="filterModal-date">
           <span className="filterModal-date-title">Date :-</span>
           <button
             onClick={() => {
-              dispatch(dateFilter({ notes, type: "lowToHigh" }));
+              dispatch(dateFilter({ notes, type: "lowToHigh", filterType: 'date' }));
             }}
           >
             INC
           </button>
-          <button>DEC</button>
+
+          <button
+            onClick={() => {
+              dispatch(dateFilter({ notes, type: "highToLow", filterType: 'date' }));
+            }}>DEC</button>
         </div>
+
         <div className="filterModal-priority">
+
           <span>Priority :-</span>
-          <button>INC</button>
-          <button>DEC</button>
+
+          <button onClick={() => {
+            dispatch(priorityFilter({ notes, type: "lowToHigh", filterType: 'priority' }));
+          }}>INC</button>
+
+          <button onClick={() => {
+            dispatch(priorityFilter({ notes, type: "highToLow", filterType: 'priority' }));
+          }}>DEC</button>
         </div>
+
         <button
           onClick={() => {
             dispatch(clearFilter());
           }}
         >
-          Remove Filter
+          {`Remove ${filterOn.charAt(0).toUpperCase()+filterOn.slice(1)} Filter`}
         </button>
       </div>
-    </BaseModal>
+    </BaseModal >
   );
 };
 

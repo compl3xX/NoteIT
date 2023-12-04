@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { filterDate } from "../../utils";
+import { filterDate, filterPriority } from "../../utils";
 
 const initialState = {
 
     datefiltered: [],
     priorityfiltered: [],
-    filterOn: false
+    filterOn: ""
 
 }
 
@@ -17,8 +17,11 @@ const FilterSlice = createSlice({
 
         dateFilter: (state, { payload }) => {
 
-            state.datefiltered = filterDate(payload)
-            state.filterOn = true
+            const { notes, type, filterType } = payload
+
+            state.datefiltered = filterDate({ notes, type })
+
+            state.filterOn = filterType
 
             console.log(state.datefiltered)
 
@@ -26,19 +29,27 @@ const FilterSlice = createSlice({
 
         priorityFilter: (state, { payload }) => {
 
+            const { notes, type, filterType } = payload
+
+            state.priorityfiltered = filterPriority({ notes, type })
+
+            state.filterOn = filterType
+
+            console.log(state.priorityfiltered)
         },
 
         clearFilter: (state, action) => {
-              state.filterOn=false
-              state.datefiltered=[]
-              console.log(state.datefiltered)
+            state.filterOn = ""
+            state.datefiltered = []
+            state.priorityfiltered = []
+            console.log(state.datefiltered)
         }
 
     }
 })
 
 
-export const { dateFilter, priorityFilter ,clearFilter} = FilterSlice.actions
+export const { dateFilter, priorityFilter, clearFilter } = FilterSlice.actions
 
 export default FilterSlice.reducer
 
