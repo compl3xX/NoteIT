@@ -7,7 +7,8 @@ Note taking web app using Redux Toolkit
 - Redux Toolkit
 - React Toast
 - React Icons
-- uuid 
+- uuid
+- SCSS
 
 # Features
 - Filter option to sorting notes according to Date/Priority
@@ -17,7 +18,8 @@ Note taking web app using Redux Toolkit
 - Detail view in Notes / Tag Notes page to view the full content
 - Editable notes
 - Text Editor to enter notes in proper fashion with Title/Content/Priority/Tags
-- Search option 
+- Search option
+- Mobile responsive
 
 
 ## License
