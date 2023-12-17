@@ -19,8 +19,8 @@ export const notesData = [
     isDetailed: false,
   },
   {
-    title: "123",
-    content: "It's not over until I win!!",
+    title: "Epictetus",
+    content: "First say to yourself what you would be; and then do what you have to do",
     bgColor: "green",
     priority: "Medium",
     tag: [{ tagName: "quote", id: v4() }],
@@ -31,8 +31,8 @@ export const notesData = [
     isDetailed: false,
   },
   {
-    title: "abc",
-    content: "It's not over until I win!!",
+    title: "Frontend",
+    content: "Vanilla Js -> ReactJs -> NextJs",
     bgColor: "green",
     priority: "Low",
     tag: [{ tagName: "work", id: v4() }],
